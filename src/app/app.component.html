@@ -1,0 +1,59 @@
+
+<div style="text-align:center">
+  <h1>
+    HomeLand {{ title }}
+  </h1>
+  <div>
+    <input type="text" placeholder="Search.." class="search" [(ngModel)]="filter">
+    <button type="button" class="button button1" data-toggle="modal" data-target="#myModal"> Add Notes</button>
+  </div>
+  <br />
+  <br />
+  <br />
+  <body data-ng-controller="ctrl">
+    <div class="container">
+      <table class="table">
+        <tr style="text-align:center">Notes</tr>
+        <tr>
+          <td>Note A -Pick colour for wallpaper</td>
+          <td><button type="button" class="btn btn-xs">Delete</button></td>
+        </tr>
+        <tr>
+          <td> Note B - Pickup laundry</td>
+          <td><button type="button" class="btn btn-xs" >Delete</button></td>
+        </tr>
+        <tr ng-repeat="name in name | filter : filter">
+          <td>{{ name }}</td>
+          <td><button type="button" class="btn btn-xs" (click)="deleteNote(name)">Delete</button></td>
+        </tr>
+
+      </table>
+    </div>
+  </body>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Notes</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" [(ngModel)]="name" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>
+
